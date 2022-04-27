@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Patient</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+</head>
+<body>
+<div layout:fragment="content1">
+   <div class="col-md-6 offset-3">
+       <h3>Créer un nouveau patient </h3>
+       <form method="post" th:action="@{/admin/save}">
+           <div>
+               <i class='fas fa-user-alt' style='font-size:24px'></i>
+               <label for="nom">Nom</label>
+               <input id="nom" class="form-control" placeholder="Name" type="text" name="nom" th:value="${patients.nom}">
+               <span class="text-danger" th:errors="${patients.nom}"></span>
+           </div>
+           <br>
+           <div>
+               <i class='fas fa-calendar-plus' style='font-size:24px'></i>
+               <label>Date Naissance</label>
+               <input class="form-control" type="date" name="dateNaissance" th:value="${patients.dateNaissance}">
+               <span class="text-danger" th:errors="${patients.dateNaissance}"></span>
+           </div>
+
+           <br>
+
+           <div>
+               <i class="fa fa-h-square" style="font-size:24px"></i>
+               <label>Malade</label>
+               <input  type="checkbox" name="malade" th:checked="${patients.malade}">
+               <span class="text-danger" th:errors="${patients.malade}"></span>
+           </div>
+
+           <br>
+
+           <div>
+               <i class='fas fa-hourglass-half' style='font-size:24px'></i>
+               <label>Score</label>
+               <input  class="form-control" type="text" name="score" th:value="${patients.score}">
+               <span class="text-danger" th:errors="${patients.score}"></span>
+           </div>
+
+           <br>
+           <button type="submit" class="btn btn-primary"><i class="fa fa-check-square" style="font-size:19px"></i>&nbsp;Save</button>
+       </form>
+   </div>
+
+
+</div>
+</body>
+</html>
